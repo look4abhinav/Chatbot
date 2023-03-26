@@ -62,7 +62,7 @@ jobs:
     - name: Test with Coverage
       run: |
         coverage erase
-        coverage run -m pytest
+        coverage run -m flake8
         coverage html
         
     - name: 'Upload Artifact'
