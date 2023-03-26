@@ -5,7 +5,7 @@ __version__ = "1.0"
 
 
 import json
-from pathlib import Path
+import pickle
 
 import keras
 import nltk
@@ -40,6 +40,12 @@ def preprocess_data(intents: dict) -> list[list]:
         tag_row[tags.index(tag)] = 1
         bag_of_words.append(word_row)
         bag_of_tags.append(tag_row)
+
+    print("Writing Pickle files...")
+    with open("words.pkl", "wb") as f:
+        pickle.dump(words, f)
+    with open("tags.pkl", "wb") as f:
+        pickle.dump(tags, f)
     return bag_of_words, bag_of_tags
 
 
@@ -76,7 +82,7 @@ def train_model(x: list[list], y: list[list]) -> keras.Model:
 
 if __name__ == "__main__":
 
-    path = Path() / "trainingdata.json"
+    path = "trainingdata.json"
     with open(path, "r") as js:
         intents = json.load(js)
 
