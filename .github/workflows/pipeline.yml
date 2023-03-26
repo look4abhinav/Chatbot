@@ -104,6 +104,7 @@ jobs:
       with:
         name: output
     - uses: actions/checkout@v3
+
     - name: Set up Python 3.11
       uses: actions/setup-python@v3
       with:
@@ -116,9 +117,6 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
     - name: Test with Coverage
-    - uses: actions/download-artifact@v2
-      with:
-        name: output
       run: |
         coverage erase
         ls
