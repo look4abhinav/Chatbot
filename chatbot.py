@@ -7,22 +7,19 @@ __version__ = "1.0"
 import json
 import pickle
 import random
-from pathlib import Path
 
 import nltk
 from nltk.stem import PorterStemmer
 from tensorflow import keras
 
-output_path = Path.cwd() / "output"
-
-with open(output_path / "words.pkl", "rb") as f:
+with open("words.pkl", "rb") as f:
     all_words = pickle.load(f)
-with open(output_path / "tags.pkl", "rb") as f:
+with open("tags.pkl", "rb") as f:
     labels = pickle.load(f)
 with open("trainingdata.json", "r") as f:
     intents = json.load(f)
 
-model = keras.models.load_model(output_path / "model.h5")
+model = keras.models.load_model("model.h5")
 stemmer = PorterStemmer()
 
 

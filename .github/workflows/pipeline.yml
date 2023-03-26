@@ -91,9 +91,9 @@ jobs:
       with:
         name: output
         path: |
-          output/model.h5
-          output/words.pkl
-          output/tags.pkl
+          model.h5
+          words.pkl
+          tags.pkl
         retention-days: 1
     
   test-chatbot:
