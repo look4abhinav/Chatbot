@@ -1,4 +1,7 @@
 from chatbot import get_response
+import warnings
+
+warnings.filterwarnings("ignore")
 
 
 def test_response():
