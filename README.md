@@ -12,6 +12,9 @@
 `pip install -r requirements.txt`
 
 ## Usage
+> If this is your first time using nltk, run the following command from the command line:
+`python punkt.py`
+
 > To train the chatbot, run the following command from the command line:
 `python train.py`
 
@@ -19,6 +22,9 @@
 `python chatbot.py`
 
 The chatbot will prompt you for input, and you can start asking questions.
+
+> To stop the chatbot, hit CMD/Ctrl + C:
+
 
 <!-- References
 [Link to reference #1]
