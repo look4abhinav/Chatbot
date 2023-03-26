@@ -91,9 +91,9 @@ jobs:
       with:
         name: output
         path: |
-          model.h5
-          words.pkl
-          tags.pkl
+          output/model.h5
+          output/words.pkl
+          output/tags.pkl
         retention-days: 1
     
   test-chatbot:
@@ -118,6 +118,7 @@ jobs:
     - name: Test with Coverage
       run: |
         coverage erase
+        ls
         coverage run -m pytest
         coverage html
   
