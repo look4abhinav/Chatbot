@@ -89,7 +89,7 @@ jobs:
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
       with:
-        name: training-data
+        name: output
         path: |
           model.h5
           words.pkl
@@ -102,7 +102,7 @@ jobs:
     steps:
     - uses: actions/download-artifact@v2
       with:
-        name: training-data
+        name: output
     - uses: actions/checkout@v3
     - name: Set up Python 3.11
       uses: actions/setup-python@v3

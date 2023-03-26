@@ -6,6 +6,7 @@ __version__ = "1.0"
 
 import json
 import pickle
+from pathlib import Path
 
 import keras
 import nltk
@@ -13,7 +14,7 @@ from keras.layers import Dense, Dropout
 from nltk.stem import PorterStemmer
 
 
-def preprocess_data(intents: dict) -> list[list]:
+def preprocess_data(intents: dict, output_path: Path) -> list[list]:
     words, tags, documents = [], [], []
     punctuations = ("!", "@", "#", ".", ",", "?", ";")
 
@@ -42,14 +43,14 @@ def preprocess_data(intents: dict) -> list[list]:
         bag_of_tags.append(tag_row)
 
     print("Writing Pickle files...")
-    with open("words.pkl", "wb") as f:
+    with open(output_path / "words.pkl", "wb") as f:
         pickle.dump(words, f)
-    with open("tags.pkl", "wb") as f:
+    with open(output_path / "tags.pkl", "wb") as f:
         pickle.dump(tags, f)
     return bag_of_words, bag_of_tags
 
 
-def train_model(x: list[list], y: list[list]) -> keras.Model:
+def train_model(x: list[list], y: list[list], output_path) -> keras.Model:
 
     model = keras.Sequential()
     model.add(Dense(units=128, activation="relu", input_shape=(len(x[0]),)))
@@ -76,7 +77,7 @@ def train_model(x: list[list], y: list[list]) -> keras.Model:
     accuracy = model.evaluate(x, y, verbose=0, use_multiprocessing=True)[1]
 
     print(f"Model Accuracy: {accuracy*100:.2f}%\nSaving model...")
-    model.save("model.h5")
+    model.save(output_path / "model.h5")
     return model
 
 
@@ -86,5 +87,9 @@ if __name__ == "__main__":
     with open(path, "r") as js:
         intents = json.load(js)
 
-    x, y = preprocess_data(intents)
-    model = train_model(x, y)
+    output_path = Path.cwd() / "output"
+    if not Path.exists(output_path):
+        Path.mkdir(output_path)
+
+    x, y = preprocess_data(intents, output_path)
+    model = train_model(x, y, output_path)
