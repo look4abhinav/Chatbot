@@ -121,7 +121,7 @@ jobs:
       run: |
         coverage erase
         python punkt.py
-        coverage run -m pytest
+        coverage run -m unittest discover
         coverage html
   
     - name: 'Upload Artifact'
