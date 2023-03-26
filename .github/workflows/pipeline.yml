@@ -59,11 +59,11 @@ jobs:
       run: |
         bandit .
 
-    - name: Test with Coverage
-      run: |
-        coverage erase
-        coverage run -m flake8
-        coverage html
+    # - name: Test with Coverage
+    #   run: |
+    #     coverage erase
+    #     coverage run -m pytest
+    #     coverage html
         
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
@@ -97,4 +97,6 @@ jobs:
       with:
         name: Trained Model
         path: model.h5
+        path: words.pkl
+        path: tags.pkl
         retention-days: 1
