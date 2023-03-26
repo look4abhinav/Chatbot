@@ -96,7 +96,8 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Trained Model
-        path: model.h5
-        path: words.pkl
-        path: tags.pkl
+        path: |
+          model.h5
+          words.pkl
+          tags.pkl
         retention-days: 1
