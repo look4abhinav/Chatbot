@@ -58,13 +58,6 @@ jobs:
     - name: Run Security Checks
       run: |
         bandit .
-        
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v3
-      with:
-        name: Coverage Reports
-        path: htmlcov/index.html
-        retention-days: 1
   
   train:
     runs-on: ubuntu-latest
@@ -118,5 +111,16 @@ jobs:
     
     - name: Test with Coverage
       run: |
+        pip install coverage
         python punkt.py
-        python -m unittest discover
+        coverage erase
+        coverage -m unittest discover
+
+        
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: Coverage Reports
+        path: htmlcov/index.html
+        retention-days: 1
+  
