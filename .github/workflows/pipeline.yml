@@ -114,7 +114,7 @@ jobs:
         pip install coverage
         python punkt.py
         coverage erase
-        coverage -m unittest discover
+        coverage run -m unittest discover
 
         
     - name: 'Upload Artifact'

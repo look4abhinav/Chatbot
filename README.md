@@ -1,3 +1,4 @@
+[![Pipeline](https://github.com/look4abhinav/Chatbot/actions/workflows/pipeline.yml/badge.svg?branch=master)](https://github.com/look4abhinav/Chatbot/actions/workflows/pipeline.yml)
 # AI Chatbot Project
 ## Overview
 
