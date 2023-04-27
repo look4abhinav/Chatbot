@@ -90,7 +90,7 @@ jobs:
         retention-days: 1
     
   test-chatbot:
-    runs-on: [windows-latest, ubuntu-latest, macos-13]
+    runs-on: [ubuntu-latest]
     strategy:
       matrix:
         python-version: [3.10, 3.11]
