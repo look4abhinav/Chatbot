@@ -13,7 +13,7 @@ from keras.layers import Dense, Dropout
 from nltk.stem import PorterStemmer
 
 
-def preprocess_data(intents: dict) -> list[]:
+def preprocess_data(intents: dict) -> list:
 	words, tags, documents = [], [], []
 	punctuations = ('!', '@', '#', '.', ',', '?', ';')
 
@@ -42,9 +42,9 @@ def preprocess_data(intents: dict) -> list[]:
 		bag_of_tags.append(tag_row)
 
 	print('Writing Pickle files...')
-	with open('words.pkl', 'wb') as f:
+	with open('files/words.pkl', 'wb') as f:
 		pickle.dump(words, f)
-	with open('tags.pkl', 'wb') as f:
+	with open('files/tags.pkl', 'wb') as f:
 		pickle.dump(tags, f)
 	return [bag_of_words, bag_of_tags]
 
