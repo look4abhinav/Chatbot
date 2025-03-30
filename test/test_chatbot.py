@@ -1,5 +1,5 @@
 import unittest
-from chatbot import get_response
+from src.chatbot.chatbot import get_response
 
 
 class test_chatbot(unittest.TestCase):
